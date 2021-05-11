@@ -81,9 +81,10 @@ class AnchoredPopUpRegion extends StatefulWidget {
   }
 }
 
+// TODO: Support for some sort of dualMode widget would be nice, has both a tooltip and a panel.
 class AnchoredPopUpRegionState extends State<AnchoredPopUpRegion> {
   Timer? _timer;
-  LayerLink _link = LayerLink();
+  AnchoredPopupsController? _popups;
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +98,10 @@ class AnchoredPopUpRegionState extends State<AnchoredPopUpRegion> {
         child: widget.child,
       );
     } else {
+      //TODO: A button builder would be nice here.
       content = TextButton(onPressed: show, child: widget.child);
     }
-    return CompositedTransformTarget(link: _link, child: content);
+    return content;
   }
 
   @override
@@ -115,7 +117,8 @@ class AnchoredPopUpRegionState extends State<AnchoredPopUpRegion> {
       print("PopoverRegion: Exiting early not mounted anymore");
       return;
     }
-    AnchoredPopups.of(context)?.show(context,
+    _popups = AnchoredPopups.of(context);
+    _popups?.show(context,
         popUpMode: widget.mode,
         popContent: widget.popChild,
         anchor: widget.anchor ?? Alignment.bottomCenter,
@@ -135,8 +138,7 @@ class AnchoredPopUpRegionState extends State<AnchoredPopUpRegion> {
 
   void _handleHoverEnd() {
     _timer?.cancel();
-    AnchoredPopupsController? popups = AnchoredPopups.of(context);
-    bool isStillOpen = popups?.currentPopup?.context == context;
-    if (isStillOpen) popups?.hide();
+    bool isStillOpen = _popups?.currentPopup?.context == context;
+    if (isStillOpen) _popups?.hide();
   }
 }

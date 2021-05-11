@@ -41,8 +41,8 @@ class AnchoredPopupsController extends State<AnchoredPopups> {
       if (rb != null) {
         anchorSize = rb.size;
         anchoredRegionPos = rb.localToGlobal(Offset(
-          anchorSize.width / 2 + (config.anchor.x ?? 0) * anchorSize.width / 2,
-          anchorSize.height / 2 + (config.anchor.y ?? 0) * anchorSize.height / 2,
+          anchorSize.width / 2 + (config.anchor.x) * anchorSize.width / 2,
+          anchorSize.height / 2 + (config.anchor.y) * anchorSize.height / 2,
         ));
       }
       // Work out the fractional offset for the popUp content based on the incoming popupAnchor.

@@ -1,6 +1,6 @@
 name: anchored_popups
-description: Shows popup panels and tooltips that are anchored to a Widget in the tree.
-version: 0.0.1
+description: Shows popup panels and custom tooltips that are anchored to a Widget in the tree.
+version: 0.0.1+2
 homepage: https://github.com/gskinnerTeam/flutter_anchored_popups
 
 environment:
