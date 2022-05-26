@@ -115,7 +115,7 @@ class AnchoredPopupsController extends State<AnchoredPopups> {
   }
 
   void _closeHoverOnScreenSizeChange() {
-    Size screenSize = MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size;
+    Size screenSize = MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
     if (screenSize != _prevSize) {
       _currentPopupConfig = null;
     }
